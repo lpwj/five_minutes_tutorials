@@ -11,6 +11,8 @@ const OPTIONS = {
   k: 'K',
 };
 
+let aVariable = 123;
+
 /**
  * @function checkingStuff
  * @description Checks the value of the code and returns based on it
@@ -168,20 +170,6 @@ function sumVariables(variable1, variable2) {
   return variable1 + variable2;
 }
 
-const functionsMapping = {
-  A: sumVariables(123, 555),
-  B: sumVariables(13, 555),
-  C: sumVariables(123, 56),
-  D: sumVariables(23, 5),
-  E: sumVariables(3, 99),
-  F: sumVariables(22, 55),
-  G: sumVariables(89, 33),
-  H: sumVariables(22, 87),
-  I: sumVariables(164, 86),
-  J: sumVariables(978, 235),
-  K: sumVariables(78, 25),
-};
-
 /**
  * @function checkingStuffUsingTheObjectsPower
  * @description Checks the value of the code and returns based on it
@@ -195,5 +183,81 @@ function checkingStuffUsingTheObjectsPower(code) {
   return functionsMapping[code];
 }
 
-console.log(functionsMapping['B']);
-console.log(checkingStuffUsingTheObjectsPower('B'));
+/**
+ ******************************************************************************************************
+ **/
+
+// const functionsMapping = {
+//   A: sumVariables.bind(123, 555),
+//   B: sumVariables(13, 555),
+//   C: sumVariables(123, 56),
+//   D: sumVariables(23, 5),
+//   E: sumVariables(3, 99),
+//   F: sumVariables(22, 55),
+//   G: sumVariables(89, 33),
+//   H: sumVariables(22, 87),
+//   I: sumVariables(164, 86),
+//   J: sumVariables(978, 235),
+//   K: sumVariables(78, 25),
+// };
+
+// console.log(functionsMapping['B']);
+// console.log(checkingStuffUsingTheObjectsPower('B'));
+
+// const functionsMapping = {
+//   A: sumVariables.bind(null, aVariable, 555),
+//   B: sumVariables.bind(null, aVariable, 555),
+//   C: sumVariables.bind(null, aVariable, 56),
+//   D: sumVariables.bind(null, aVariable, 5),
+//   E: sumVariables.bind(null, aVariable, 99),
+//   F: sumVariables.bind(null, aVariable, 55),
+//   G: sumVariables.bind(null, aVariable, 33),
+//   H: sumVariables.bind(null, aVariable, 87),
+//   I: sumVariables.bind(null, aVariable, 86),
+//   J: sumVariables.bind(null, aVariable, 235),
+//   K: sumVariables.bind(null, aVariable, 25),
+// };
+
+// console.log(functionsMapping['B']());
+// console.log(checkingStuffUsingTheObjectsPower('B')());
+
+// console.log(functionsMapping['B']());
+// console.log(checkingStuffUsingTheObjectsPower('B')());
+
+// console.log(functionsMapping['C'].call());
+// console.log(checkingStuffUsingTheObjectsPower('C').call());
+
+/**
+ ******************************************************************************************************
+ **/
+
+// /**
+//  * @function subtractVariables
+//  * @description subtracts two variables and returns the value
+//  * @param {Number} variable1
+//  * @param {Number} variable2
+//  * @returns
+//  */
+//  function subtractVariables(variable1, variable2) {
+//     return variable1 - variable2;
+//   }
+
+// const functionsMapping = {
+//   A: sumVariables,
+//   B: subtractVariables,
+//   C: subtractVariables,
+//   D: sumVariables,
+//   E: subtractVariables,
+//   F: sumVariables,
+//   G: sumVariables,
+//   H: subtractVariables,
+//   I: sumVariables,
+//   J: subtractVariables,
+//   K: sumVariables,
+// };
+
+// console.log(functionsMapping['A'].call(null, aVariable, 33));
+// console.log(checkingStuffUsingTheObjectsPower('A').call(null, aVariable, 33));
+
+// console.log(functionsMapping['C'].call(null, aVariable, 33));
+// console.log(checkingStuffUsingTheObjectsPower('C').call(null, aVariable, 33));
