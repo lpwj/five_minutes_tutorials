@@ -11,7 +11,7 @@ const OPTIONS = {
   k: 'K',
 };
 
-let aVariable = 123;
+const aVariable = 123;
 
 /**
  * @function checkingStuff
@@ -187,8 +187,9 @@ function checkingStuffUsingTheObjectsPower(code) {
  ******************************************************************************************************
  **/
 
+
 // const functionsMapping = {
-//   A: sumVariables.bind(123, 555),
+//   A: sumVariables(123, 555),
 //   B: sumVariables(13, 555),
 //   C: sumVariables(123, 56),
 //   D: sumVariables(23, 5),
@@ -231,33 +232,33 @@ function checkingStuffUsingTheObjectsPower(code) {
  ******************************************************************************************************
  **/
 
-// /**
-//  * @function subtractVariables
-//  * @description subtracts two variables and returns the value
-//  * @param {Number} variable1
-//  * @param {Number} variable2
-//  * @returns
-//  */
-//  function subtractVariables(variable1, variable2) {
-//     return variable1 - variable2;
-//   }
+/**
+ * @function subtractVariables
+ * @description subtracts two variables and returns the value
+ * @param {Number} variable1
+ * @param {Number} variable2
+ * @returns
+ */
+ function subtractVariables(variable1, variable2) {
+    return variable1 - variable2;
+  }
 
-// const functionsMapping = {
-//   A: sumVariables,
-//   B: subtractVariables,
-//   C: subtractVariables,
-//   D: sumVariables,
-//   E: subtractVariables,
-//   F: sumVariables,
-//   G: sumVariables,
-//   H: subtractVariables,
-//   I: sumVariables,
-//   J: subtractVariables,
-//   K: sumVariables,
-// };
+const functionsMapping = {
+  A: sumVariables,
+  B: subtractVariables,
+  C: subtractVariables,
+  D: sumVariables,
+  E: subtractVariables,
+  F: sumVariables,
+  G: sumVariables,
+  H: subtractVariables,
+  I: sumVariables,
+  J: subtractVariables,
+  K: sumVariables,
+};
 
-// console.log(functionsMapping['A'].call(null, aVariable, 33));
-// console.log(checkingStuffUsingTheObjectsPower('A').call(null, aVariable, 33));
+console.log(functionsMapping['A'].call(null, aVariable, 33));
+console.log(checkingStuffUsingTheObjectsPower('A').call(null, aVariable, 33));
 
-// console.log(functionsMapping['C'].call(null, aVariable, 33));
-// console.log(checkingStuffUsingTheObjectsPower('C').call(null, aVariable, 33));
+console.log(functionsMapping['C'].call(null, aVariable, 33));
+console.log(checkingStuffUsingTheObjectsPower('C').call(null, aVariable, 33));
