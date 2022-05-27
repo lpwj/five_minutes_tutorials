@@ -73,7 +73,7 @@ function isFerrariCertified(obj) {
 }
 
 /**
- * @function isFerrariCertified
+ * @function isFerrariCertifiedGuardClause
  * @description Returns is object is a Ferrari car.
  * @param {Object} obj The object to check if it is a car.
  * @returns {Boolean}
