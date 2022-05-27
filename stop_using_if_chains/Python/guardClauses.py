@@ -86,7 +86,7 @@ def main():
     car = Car("car", "car", "Ford", True)
     car2 = Car("car2", "car", "Ferrari", True)
     car3 = Car("car3", "car", "Ferrari", False)
-    car4 = Car("car4", "bike", "Ford", True)
+    car4 = Car("car4", "bike", "Honda", True)
     cars = [car, car2, car3, car4]
 
     for car in cars:
