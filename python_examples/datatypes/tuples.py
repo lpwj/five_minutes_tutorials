@@ -1,8 +1,17 @@
 def create_tuple_from_list(list_data: list) -> tuple:
+    """Receives a list of data and returns a tuple of data.
+
+    Args:
+        list_data (list): A lists of elements of any datatype.
+
+    Returns:
+        tuple: A tuple based on the list of data received.
+    """
     return tuple(list_data)
 
 
 def create_and_print_tuple() -> None:
+    """Creates 3 distinct tuples and prints them."""
     myTuple: tuple = (1, 2, 3, 4, 5)
     myTuple2: tuple = ("a", "b", "c")
     # in a list we get the reference to it an not the actual values
@@ -15,6 +24,7 @@ def create_and_print_tuple() -> None:
 
 
 def create_change_list_and_print_tuple() -> None:
+    """Creates a tuple with a list and appends a value to it."""
     # in a list we get the reference to it an not the actual values
     myTuple: tuple = ([1, 2, 3], 1, "c")
     # we can append values to list since we are storing the reference to the list and not the values of it.
@@ -26,6 +36,10 @@ def create_change_list_and_print_tuple() -> None:
 
 
 def update_list_and_print_hash() -> None:
+    """Creates a tuple with a list and appends a value to it.
+    Creates another tuple of strings.
+    Shows the hash value for both tuples.
+    """
     # in a list we get the reference to it an not the actual values
     myTuple: tuple = ([1, 2, 3], 1, "c")
     # we can append values to list since we are storing the reference to the list and not the values of it.
@@ -39,6 +53,7 @@ def update_list_and_print_hash() -> None:
 
 
 def main() -> None:
+    """Main file function executed when we run the python script file."""
     print("\nPrinting create_tuple_from_list():")
     newTuple = create_tuple_from_list([1, 5, 9, 8])
     print(newTuple)
