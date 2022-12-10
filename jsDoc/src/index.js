@@ -4,16 +4,14 @@
  * <b>The main goal is to build something with a specific height and width.</b>
  *
  * Some list here:
- *  - 1
- *  - 2
- *  - 3
+ *  - 1 item example here
+ *  - <b>Bold again here</b>
+ *  - Some other line
  *
  * @author LPWJ
  */
 
-/**
- * This class represents the instance we want to generate
- */
+
 class SomeClass {
   /**
    * @method constructor
