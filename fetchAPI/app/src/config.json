@@ -2,7 +2,7 @@
   "host": "localhost",
   "isSecure": false,
   "port": 8080,
-  "api_base_path": "api/v1/myApp",
+  "apiBasePathContext": "api/v1/myApp",
   "useCredentials": false,
   "endpoints": {
     "getUsers": "users/all/",

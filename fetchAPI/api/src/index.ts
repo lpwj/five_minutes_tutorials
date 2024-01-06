@@ -11,10 +11,12 @@ app.use(cors());
 
 const base_context = '/api/v1/myApp';
 
+// ping endpoint to check if API is up and running
 app.get(`${base_context}/ping`, async (req: Request, res: Response) => {
   res.json({ pong: 'pong' });
 });
 
+// get all users
 app.get(`${base_context}/users/all/`, async (req: Request, res: Response) => {
   const users = [];
   for (let index = 0; index < 15; index++) {
@@ -28,6 +30,7 @@ app.get(`${base_context}/users/all/`, async (req: Request, res: Response) => {
   res.json(users);
 });
 
+// get a user by ID
 app.get(`${base_context}/users/user/:id`, async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -38,6 +41,8 @@ app.get(`${base_context}/users/user/:id`, async (req: Request, res: Response) =>
     joinDate: new Date().toISOString(),
   });
 });
+
+// get all books
 app.get(`${base_context}/books/all/`, async (req: Request, res: Response) => {
   const books = [];
   for (let index = 0; index < 15; index++) {
@@ -50,6 +55,8 @@ app.get(`${base_context}/books/all/`, async (req: Request, res: Response) => {
   }
   res.json(books);
 });
+
+// get a book by ID
 app.get(`${base_context}/books/book/:id`, async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -62,6 +69,8 @@ app.get(`${base_context}/books/book/:id`, async (req: Request, res: Response) =>
   });
 });
 
+
+// creating a server to run the API
 const server = http.createServer(app);
 
 const port = 8080;
