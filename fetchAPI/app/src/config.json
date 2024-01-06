@@ -1,0 +1,13 @@
+{
+  "host": "localhost",
+  "isSecure": false,
+  "port": 8080,
+  "api_base_path": "api/v1/myApp",
+  "useCredentials": false,
+  "endpoints": {
+    "getUsers": "users/all/",
+    "getUserById": "users/user/",
+    "getBooks": "books/all/",
+    "getBookById": "books/book/"
+  }
+}
