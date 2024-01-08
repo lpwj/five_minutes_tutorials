@@ -1,14 +1,17 @@
 import config from '../config.json';
 
+export const SUCCESS_RESPONSE_CODE = 'success';
+export const ERROR_RESPONSE_CODE = 'error';
+
 type allowedMethods = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
 
 type SuccessResponse<D> = {
-  code: 'success';
+  code: typeof SUCCESS_RESPONSE_CODE;
   data: D;
 };
 
 type ErrorResponse<E = Error> = {
-  code: 'error';
+  code: typeof ERROR_RESPONSE_CODE;
   error: E;
 };
 

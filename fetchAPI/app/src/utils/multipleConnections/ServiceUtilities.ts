@@ -1,5 +1,8 @@
 import config from '../../configMultiple.json';
 
+export const SUCCESS_RESPONSE_CODE = 'success';
+export const ERROR_RESPONSE_CODE = 'error';
+
 type allowedMethods = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
 
 type SuccessResponse<D> = {
