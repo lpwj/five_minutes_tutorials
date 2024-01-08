@@ -1,4 +1,4 @@
-import config from '../configMultiple.json';
+import config from '../../configMultiple.json';
 
 type allowedMethods = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
 

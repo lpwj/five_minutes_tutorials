@@ -1,4 +1,4 @@
-import { fetchDatabaseApiData } from '../utils/MultipleServiceConfigUtilities';
+import { fetchDatabaseApiData } from '../../utils/multipleConnections/ServiceUtilities';
 
 export type User = {
   id: number;

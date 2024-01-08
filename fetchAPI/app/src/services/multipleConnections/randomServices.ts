@@ -1,4 +1,4 @@
-import { fetchServiceApiData } from '../utils/MultipleServiceConfigUtilities';
+import { fetchServiceApiData } from '../../utils/multipleConnections/ServiceUtilities';
 
 export type Random = {
   id: number;
