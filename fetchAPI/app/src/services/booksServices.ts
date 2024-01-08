@@ -26,5 +26,5 @@ export const getAllBooks = async () => {
  * @async
  */
 export const getBookById = async (bookId: Book['id']) => {
-  return await fetchData<Book>('getBookById', 'GET', undefined, { id: bookId });
+  return await fetchData<Book>('getBookById', 'GET', undefined, { id: bookId.toString() });
 };

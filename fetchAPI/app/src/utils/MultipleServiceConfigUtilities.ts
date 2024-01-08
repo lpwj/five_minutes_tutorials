@@ -35,7 +35,7 @@ const buildEndpoint = (isSecure: boolean, host: string, port: number, apiContext
 const buildEndpointDatabaseApi = (endpointProperty: keyof typeof config.endpoints) => {
   return `${buildEndpoint(config.isSecure, config.host, config.databaseApiPort, config.databaseApiBasePathContext)}/${
     config.endpoints[endpointProperty]
-  } `;
+  }`;
 };
 
 /**
@@ -47,7 +47,7 @@ const buildEndpointDatabaseApi = (endpointProperty: keyof typeof config.endpoint
 const buildEndpointServicesApi = (endpointProperty: keyof typeof config.endpoints) => {
   return `${buildEndpoint(config.isSecure, config.host, config.serviceApiPort, config.serviceApiBasePathContext)}/${
     config.endpoints[endpointProperty]
-  } `;
+  }`;
 };
 
 /**
@@ -66,7 +66,7 @@ const fetchData = async <D, E = Error>(
   endpointProperty: keyof typeof config.endpoints,
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
-  queryStringParameters?: Record<string, unknown>
+  queryStringParameters?: Record<string, string>
 ): BaseFetchResponse<D, E> => {
   // TODO: handle tokens to authenticate the request
   let fetchOptions: RequestInit = {
@@ -82,12 +82,10 @@ const fetchData = async <D, E = Error>(
   }
 
   if (method === 'GET' || method === 'DELETE') {
-    // TODO: URL Parameters encoding (URLSearchParams) should do it
     if (queryStringParameters && Object.keys(queryStringParameters).length) {
-      for (const key in queryStringParameters) {
-        const element = queryStringParameters[key];
-        apiUrl = `${apiUrl}/${element}`;
-      }
+      const urlSearchParams = new URLSearchParams(queryStringParameters);
+      console.log(urlSearchParams.toString());
+      apiUrl = `${apiUrl}?${urlSearchParams.toString()}`;
     }
   }
 
@@ -136,7 +134,7 @@ export const fetchDatabaseApiData = async <D, E = Error>(
   endpointProperty: keyof typeof config.endpoints,
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
-  queryStringParameters?: Record<string, unknown>
+  queryStringParameters?: Record<string, string>
 ): BaseFetchResponse<D, E> => {
   return await fetchData(buildEndpointDatabaseApi, endpointProperty, method, bodyData, queryStringParameters);
 };
@@ -155,7 +153,7 @@ export const fetchServiceApiData = async <D, E = Error>(
   endpointProperty: keyof typeof config.endpoints,
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
-  queryStringParameters?: Record<string, unknown>
+  queryStringParameters?: Record<string, string>
 ): BaseFetchResponse<D, E> => {
   return await fetchData(buildEndpointServicesApi, endpointProperty, method, bodyData, queryStringParameters);
 };

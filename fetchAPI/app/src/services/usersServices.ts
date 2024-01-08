@@ -25,5 +25,5 @@ export const getAllUsers = async () => {
  * @async
  */
 export const getUserById = async (userId: User['id']) => {
-  return await fetchData<User>('getUserById', 'GET', undefined, { id: userId });
+  return await fetchData<User>('getUserById', 'GET', undefined, { id: userId.toString() });
 };

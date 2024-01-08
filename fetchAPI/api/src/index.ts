@@ -32,8 +32,8 @@ app.get(`${databaseApiBaseContext}/users/all/`, async (req: Request, res: Respon
 });
 
 // get a user by ID
-app.get(`${databaseApiBaseContext}/users/user/:id`, async (req: Request, res: Response) => {
-  const { id } = req.params;
+app.get(`${databaseApiBaseContext}/users/user/`, async (req: Request, res: Response) => {
+  const id = req.query.id;
 
   res.json({
     id,
@@ -58,8 +58,8 @@ app.get(`${databaseApiBaseContext}/books/all/`, async (req: Request, res: Respon
 });
 
 // get a book by ID
-app.get(`${databaseApiBaseContext}/books/book/:id`, async (req: Request, res: Response) => {
-  const { id } = req.params;
+app.get(`${databaseApiBaseContext}/books/book/`, async (req: Request, res: Response) => {
+  const id = req.query.id;
 
   res.json({
     id,

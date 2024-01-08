@@ -1,7 +1,10 @@
 import { getAllUsers, getUserById } from './services/usersServices';
 import { getAllBooks, getBookById } from './services/booksServices';
 
-import { getAllUsers as getAllUsersMultipleServices } from './services/databaseMultipleServices';
+import {
+  getAllUsers as getAllUsersMultipleServices,
+  getUserById as getUserByIdMultipleServices,
+} from './services/databaseMultipleServices';
 import { getRandomObject } from './services/serviceMultipleServices';
 
 const getDataExample = async () => {
@@ -46,6 +49,15 @@ const getDataExampleFromMultipleServicesConfig = async () => {
   if (allUsersMultipleServicesResponse.code === 'error') {
     console.log('allUsersMultipleServicesResponse error', allUsersMultipleServicesResponse.error.message);
   }
+
+  const userByIdMultipleServicesResponse = await getUserByIdMultipleServices(666);
+  if (userByIdMultipleServicesResponse.code === 'success') {
+    console.log('userByIdMultipleServicesResponse success', userByIdMultipleServicesResponse.data);
+  }
+  if (userByIdMultipleServicesResponse.code === 'error') {
+    console.log('userByIdMultipleServicesResponse error', userByIdMultipleServicesResponse.error.message);
+  }
+
   const randomObjectResponse = await getRandomObject();
   if (randomObjectResponse.code === 'success') {
     console.log('randomObjectResponse success', randomObjectResponse.data);
@@ -56,4 +68,5 @@ const getDataExampleFromMultipleServicesConfig = async () => {
 };
 
 // getDataExample();
+
 getDataExampleFromMultipleServicesConfig();

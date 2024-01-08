@@ -23,7 +23,7 @@ type BaseFetchResponse<D, E> = Promise<SuccessResponse<D> | ErrorResponse<E>>;
 const buildEndpoint = (endpointProperty: keyof typeof config.endpoints) => {
   return `${config.isSecure ? 'https' : 'http'}://${config.host}:${config.port}/${config.apiBasePathContext}/${
     config.endpoints[endpointProperty]
-  } `;
+  }`;
 };
 
 /**
@@ -40,7 +40,7 @@ export const fetchData = async <D, E = Error>(
   endpointProperty: keyof typeof config.endpoints,
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
-  queryStringParameters?: Record<string, unknown>
+  queryStringParameters?: Record<string, string>
 ): BaseFetchResponse<D, E> => {
   // TODO: handle tokens to authenticate the request
   let fetchOptions: RequestInit = {
@@ -56,12 +56,9 @@ export const fetchData = async <D, E = Error>(
   }
 
   if (method === 'GET' || method === 'DELETE') {
-    // TODO: URL Parameters encoding (URLSearchParams) should do it
     if (queryStringParameters && Object.keys(queryStringParameters).length) {
-      for (const key in queryStringParameters) {
-        const element = queryStringParameters[key];
-        apiUrl = `${apiUrl}/${element}`;
-      }
+      const urlSearchParams = new URLSearchParams(queryStringParameters);
+      apiUrl = `${apiUrl}?${urlSearchParams.toString()}`;
     }
   }
 
