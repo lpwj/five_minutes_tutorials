@@ -1,10 +1,13 @@
 import { getAllUsers, getUserById } from './services/usersServices';
-import { Book, getAllBooks, getBookById } from './services/booksServices';
+import { getAllBooks, getBookById } from './services/booksServices';
+
+import { getAllUsers as getAllUsersMultipleServices } from './services/databaseMultipleServices';
+import { getRandomObject } from './services/serviceMultipleServices';
 
 const getDataExample = async () => {
   const booksResponse = await getAllBooks();
   if (booksResponse.code === 'success') {
-    console.log('booksResponse success', booksResponse.data);
+    console.log('booksResponse success', booksResponse.data[0]);
   }
   if (booksResponse.code === 'error') {
     console.log('booksResponse error', booksResponse.error.message);
@@ -20,7 +23,7 @@ const getDataExample = async () => {
 
   const allUsersResponse = await getAllUsers();
   if (allUsersResponse.code === 'success') {
-    console.log('allUsersResponse success', allUsersResponse.data);
+    console.log('allUsersResponse success', allUsersResponse.data[0]);
   }
   if (allUsersResponse.code === 'error') {
     console.log('allUsersResponse error', allUsersResponse.error.message);
@@ -35,4 +38,22 @@ const getDataExample = async () => {
   }
 };
 
-getDataExample();
+const getDataExampleFromMultipleServicesConfig = async () => {
+  const allUsersMultipleServicesResponse = await getAllUsersMultipleServices();
+  if (allUsersMultipleServicesResponse.code === 'success') {
+    console.log('allUsersMultipleServicesResponse success', allUsersMultipleServicesResponse.data[0]);
+  }
+  if (allUsersMultipleServicesResponse.code === 'error') {
+    console.log('allUsersMultipleServicesResponse error', allUsersMultipleServicesResponse.error.message);
+  }
+  const randomObjectResponse = await getRandomObject();
+  if (randomObjectResponse.code === 'success') {
+    console.log('randomObjectResponse success', randomObjectResponse.data);
+  }
+  if (randomObjectResponse.code === 'error') {
+    console.log('randomObjectResponse error', randomObjectResponse.error.message);
+  }
+};
+
+// getDataExample();
+getDataExampleFromMultipleServicesConfig();

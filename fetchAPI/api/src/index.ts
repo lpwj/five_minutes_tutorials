@@ -9,15 +9,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const base_context = '/api/v1/myApp';
+const databaseApiBaseContext = '/api/v1/myDatabaseApi';
+const serviceApiBaseContext = '/api/v1/myServiceApi';
 
 // ping endpoint to check if API is up and running
-app.get(`${base_context}/ping`, async (req: Request, res: Response) => {
+app.get(`${databaseApiBaseContext}/ping`, async (req: Request, res: Response) => {
   res.json({ pong: 'pong' });
 });
 
 // get all users
-app.get(`${base_context}/users/all/`, async (req: Request, res: Response) => {
+app.get(`${databaseApiBaseContext}/users/all/`, async (req: Request, res: Response) => {
   const users = [];
   for (let index = 0; index < 15; index++) {
     users.push({
@@ -31,7 +32,7 @@ app.get(`${base_context}/users/all/`, async (req: Request, res: Response) => {
 });
 
 // get a user by ID
-app.get(`${base_context}/users/user/:id`, async (req: Request, res: Response) => {
+app.get(`${databaseApiBaseContext}/users/user/:id`, async (req: Request, res: Response) => {
   const { id } = req.params;
 
   res.json({
@@ -43,7 +44,7 @@ app.get(`${base_context}/users/user/:id`, async (req: Request, res: Response) =>
 });
 
 // get all books
-app.get(`${base_context}/books/all/`, async (req: Request, res: Response) => {
+app.get(`${databaseApiBaseContext}/books/all/`, async (req: Request, res: Response) => {
   const books = [];
   for (let index = 0; index < 15; index++) {
     books.push({
@@ -57,7 +58,7 @@ app.get(`${base_context}/books/all/`, async (req: Request, res: Response) => {
 });
 
 // get a book by ID
-app.get(`${base_context}/books/book/:id`, async (req: Request, res: Response) => {
+app.get(`${databaseApiBaseContext}/books/book/:id`, async (req: Request, res: Response) => {
   const { id } = req.params;
 
   res.json({
@@ -69,6 +70,17 @@ app.get(`${base_context}/books/book/:id`, async (req: Request, res: Response) =>
   });
 });
 
+////////////////////////////////////////////
+//////////////  Service API  //////////////
+///////////////////////////////////////////
+
+// get a random object on other API
+app.get(`${serviceApiBaseContext}/random/`, async (req: Request, res: Response) => {
+  res.json({
+    id: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+    title: (Math.random() + 1).toString(36).substring(2, 7),
+  });
+});
 
 // creating a server to run the API
 const server = http.createServer(app);

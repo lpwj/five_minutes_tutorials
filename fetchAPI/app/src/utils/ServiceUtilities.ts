@@ -71,7 +71,7 @@ export const fetchData = async <D, E = Error>(
   }
 
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, fetchOptions);
     if (response.ok) {
       try {
         const data = (await response.json()) as D;
