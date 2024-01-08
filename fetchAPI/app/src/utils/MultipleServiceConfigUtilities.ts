@@ -53,6 +53,7 @@ const buildEndpointServicesApi = (endpointProperty: keyof typeof config.endpoint
 /**
  * @function fetchData
  * @description Creates the correct url and options to call the fetch API.
+ * @param buildEndpointCallback The function to execute so we can get the endpoint url to call.
  * @param endpointProperty The json file property, form the endpoints object, to get the value and use to build the url.
  * @param method The request's method.
  * @param bodyData [Optional] A JSON object to send in the request payload.
