@@ -89,6 +89,6 @@ export const fetchData = async <D, E = Error>(
 
   return {
     code: 'error',
-    error: new Error('Cannot make the service request') as E,
+    error: new Error('Cannot make the service request!') as E,
   };
 };
