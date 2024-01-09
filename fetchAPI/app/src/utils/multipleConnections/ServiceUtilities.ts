@@ -138,8 +138,8 @@ export const fetchDatabaseApiData = async <D, E = Error>(
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
   queryStringParameters?: Record<string, string>
-): BaseFetchResponse<D, E> => {
-  return await fetchData(buildEndpointDatabaseApi, endpointProperty, method, bodyData, queryStringParameters);
+) => {
+  return await fetchData<D, E>(buildEndpointDatabaseApi, endpointProperty, method, bodyData, queryStringParameters);
 };
 
 /**
@@ -157,6 +157,6 @@ export const fetchServiceApiData = async <D, E = Error>(
   method: allowedMethods = 'GET',
   bodyData?: Record<string, unknown>,
   queryStringParameters?: Record<string, string>
-): BaseFetchResponse<D, E> => {
-  return await fetchData(buildEndpointServicesApi, endpointProperty, method, bodyData, queryStringParameters);
+) => {
+  return await fetchData<D, E>(buildEndpointServicesApi, endpointProperty, method, bodyData, queryStringParameters);
 };
