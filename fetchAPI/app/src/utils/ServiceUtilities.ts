@@ -70,28 +70,25 @@ export const fetchData = async <D, E = Error>(
     fetchOptions.credentials = 'include';
   }
 
+
   try {
     const response = await fetch(apiUrl, fetchOptions);
-    if (response.ok) {
-      try {
-        const data = (await response.json()) as D;
-        return {
-          code: 'success',
-          data,
-        };
-      } catch (error) {
-        throw error;
-      }
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}: ${response.statusText}`);
+    }
+    try {
+      const data = (await response.json()) as D;
+      return {
+        code: SUCCESS_RESPONSE_CODE,
+        data,
+      };
+    } catch (error) {
+      throw error;
     }
   } catch (error) {
     return {
-      code: 'error',
+      code: ERROR_RESPONSE_CODE,
       error: error as E,
     };
   }
-
-  return {
-    code: 'error',
-    error: new Error('Cannot make the service request!') as E,
-  };
 };
